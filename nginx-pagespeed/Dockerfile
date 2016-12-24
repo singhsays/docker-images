@@ -10,6 +10,7 @@ COPY pagespeed-deps-linux-amd64 ${BUILD_DIR}/pagespeed-deps
 # Enable deb-src for build-dep
 RUN sed -ie "s/^# deb-src/deb-src/" /etc/apt/sources.list && \
     apt-get update && \
+    apt-get -y --no-install-recommends install openssl ca-certificates && \
     apt-get -y --no-install-recommends build-dep nginx && \
     ${BUILD_DIR}/pagespeed-deps && \
     cd ${BUILD_DIR}/nginx && make && make install
