@@ -17,7 +17,7 @@ RUN sed -ie "s/^# deb-src/deb-src/" /etc/apt/sources.list && \
 
 RUN mkdir -p /var/cache/nginx && \
     mkdir -p /var/cache/ngx_pagespeed && \
-    cd && rm-rf ${BUILD_DIR} && \
+    cd && rm -rf ${BUILD_DIR} && \
     apt-get -y autoremove
 
 COPY nginx.conf /etc/nginx/nginx.conf
